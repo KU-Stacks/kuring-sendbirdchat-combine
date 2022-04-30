@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SendbirdChatSDK
 
-public enum ChannelEvent {
+public enum ChannelEvent: Equatable {
     case received(BaseMessage)
     case updated(BaseMessage)
     case messageDeleted(Int64)

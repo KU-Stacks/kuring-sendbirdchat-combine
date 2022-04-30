@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ConnectionEvent {
+public enum ConnectionEvent: Equatable {
     case started
     case succeeded
     case failed

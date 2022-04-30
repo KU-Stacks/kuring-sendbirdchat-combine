@@ -8,7 +8,7 @@
 import Foundation
 import SendbirdChatSDK
 
-public enum MessageEvent {
+public enum MessageEvent: Equatable {
     case tempMessage(BaseMessage)
     case sentMessage(BaseMessage)
     case progress(Int64, Int64, Int64)

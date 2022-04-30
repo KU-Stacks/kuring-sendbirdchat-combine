@@ -8,7 +8,7 @@
 import Foundation
 import SendbirdChatSDK
 
-public struct ChannelEventInfo {
+public struct ChannelEventInfo: Equatable {
     let channel: BaseChannel
     let event: ChannelEvent
 }

@@ -17,7 +17,7 @@ extension BaseChannel {
             .eraseToAnyPublisher()
     }
     
-    public func sendUserMessage(_ message: String) -> AnyPublisher<MessageEvent, MessageFailure> {
+    public func sendUserMessagePublisher(_ message: String) -> AnyPublisher<MessageEvent, MessageFailure> {
         let messageSubject = CurrentValueSubject<MessageEvent?, MessageFailure>(nil)
         
         let tempMessage = sendUserMessage(message) { (message, error) in
@@ -50,7 +50,7 @@ extension BaseChannel {
             .eraseToAnyPublisher()
     }
     
-    public func delete(userMessage: UserMessage) -> AnyPublisher<Void, SBError> {
+    public func deleteUserMessagePublisher(_ userMessage: UserMessage) -> AnyPublisher<Void, SBError> {
         Future<Void, SBError> { [weak self] promise in
             self?.deleteMessage(
                 userMessage,
@@ -60,7 +60,7 @@ extension BaseChannel {
         .eraseToAnyPublisher()
     }
     
-    public func delete(messageID: Int64) -> AnyPublisher<Void, SBError> {
+    public func deleteMessagePublisher(with messageID: Int64) -> AnyPublisher<Void, SBError> {
         Future<Void, SBError> { [weak self] promise in
             self?.deleteMessage(
                 messageId: messageID,
@@ -70,7 +70,7 @@ extension BaseChannel {
         .eraseToAnyPublisher()
     }
     
-    public func resend(userMessage: UserMessage) -> AnyPublisher<MessageEvent, MessageFailure> {
+    public func resendUserMessagePublisher(_ userMessage: UserMessage) -> AnyPublisher<MessageEvent, MessageFailure> {
         let messageSubject = CurrentValueSubject<MessageEvent?, MessageFailure>(nil)
         
         let tempMessage = resendUserMessage(userMessage) { (message, error) in
